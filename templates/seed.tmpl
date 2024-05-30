@@ -1,0 +1,70 @@
+{{ "{{" }}Seed infobox
+|sellValue   = {{.SellValue}}
+<!-- Item Data -->
+|itemType    = Seed
+|planet      = {{.Planet}}
+|produces    = {{$lastProduct := (len .Produces | sub 1)}}{{range $i, $p := .Produces}}{{$p}}{{if neq $i $lastProduct}};{{end}}{{end}}
+<!-- Growth Data -->
+|growth      = {{.Growth}}
+|maxHarvest  = {{.MaxHarvest}}
+|cropYield   = {{.Yield}}  {{ "}}" }}
+
+{{ if .HasStages }}
+'''{{.Name}}''' can be bought from the [[general store]] while the player's ship is docked at [[{{.Planet}}]]. This seed has the potential to grow into {{$lastProduct := (len .Produces | sub 1)}}{{$lenProducts := len .Produces}}{{range $i, $p := .Produces}}{{if neq $lenProducts 1}}{{if eq $i $lastProduct}} or {{end}}{{else}}a(n) {{end}}{{$p}}{{if neq $i $lastProduct}},{{end}}{{end}}. This seed takes '''{{ num2words .Growth }} days''' until the crop can be harvested for the first time.{{if neq .MaxHarvest 1}} The player can continue to harvest this crop up to '''{{num2words .MaxHarvest}} times'''.{{end}} A single plant yields '''{{num2words .Yield}} crops''' on average.
+
+==Growth Stages==
+{| class="lkg-table"
+!Seedling {{range $i, $s := .Stages }}{{if neq $i 0}}!!Stage {{$i}}{{end}}{{end}}
+|-
+{{ range .Stages }}
+|style="vertical-align:bottom;"|[[File:{{.}}|50px]]
+{{ end }}
+|}
+{{else}}
+'''{{.Name}}''' can drop from dig spots while the player is exploring the planet {{.Planet}}. When planted, the seed transforms into one of the Seeds that are native to that planet. If the planter is broken, the planter will return the seed it transformed into.
+{{end}}
+
+==Sources==
+===Purchased===
+{{ "{{" }}purchased at{{ "}}" }}
+
+===Crafted===
+{{ "{{" }}Recipe/none{{ "}}" }}
+
+===Dropped===
+{{ "{{" }}item as drop{{ "}}" }}
+
+===Gifted===
+*No NPC currently gives the player this item.
+
+===Mission Reward===
+{{ "{{" }}item as quest reward{{ "}}" }}
+
+==Uses==
+===Gifting===
+{{ "{{" }}gifted item
+|love    = {{ if eq 1 .DefaultGiftLevel }}universal{{end}}
+|like    = {{ if eq 2 .DefaultGiftLevel }}universal{{end}}
+|neutral = {{ if eq 0 .DefaultGiftLevel }}universal{{end}}
+|dislike = {{ if eq 3 .DefaultGiftLevel }}universal{{end}}
+{{ "}}" }}
+
+===Recipes===
+{{ "{{" }}item as ingredient{{ "}}" }}
+
+===Missions===
+{{ "{{" }}item required for quest{{ "}}" }}
+
+<!--==Gallery==
+<gallery>
+imagename.png|imagedescription
+</gallery>
+
+==Trivia==
+*
+
+==History==
+*{{ "{{" }}history|x.x|description of change{{ "}}" }}
+-->
+==Navigation==
+{{ "{{" }}Agriculture navbox|seeds{{ "}}" }}
